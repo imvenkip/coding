@@ -1,12 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* ****************************
-Pending tasks:
-4. Add swich statement for input.
-
-******************************/
-
 typedef struct node_s
 {
 	int data;
@@ -261,7 +255,9 @@ void main()
 				printf("\n");
 				continue;
 			case 8:
+				printf("Before free: %p\n", head);
 				freeLinkedList();
+				printf("After free: %p\n", head);
 				break;
 		}
 		break;		
