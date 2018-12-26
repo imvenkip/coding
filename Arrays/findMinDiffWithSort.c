@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 void printArray(int arr[], int size);
 
@@ -15,17 +16,19 @@ int cmpfunc (const void * a, const void * b) {
 void minDistance(int arr[], int size)
 {
 	printArray(arr, size);
+	int curmindif=INT_MAX;
+	int diff = 0;
 	qsort(arr, size, sizeof(int), cmpfunc);
-	int oldmindif = INT_MIN;
-	int high;
-	int i;
-	for (i=0; i<size-1; i++)
+	printArray(arr, size);
+
+	for (int i=0; i<size-1; i++)
 	{
-		int diff = abs(arr[i] - arr[i+1]);
-		if (oldmindif > diff)
-			oldmindif = diff;
+		diff = abs(arr[i] - arr[i+1]);
+		if (curmindif > diff)
+			curmindif = diff;
+		printf("%d %d %d %d\n", arr[i], arr[i+1], diff, curmindif);
 	}
-	printf("Minimum difference: %d\n", oldmindif); 	
+	printf("Minimum difference: %d\n", curmindif); 	
 } 
 
 void printArray(int arr[], int size)
@@ -39,7 +42,8 @@ void printArray(int arr[], int size)
 
 int main()
 {
-	int array[] = {8,24,3,20,1,17};
+	//int array[] = {8,24,3,20,1,17};
+	int array[] = {35,8,24,3,20,1,17,25,19,34,32,36};
 	int size = sizeof(array)/sizeof(array[0]);
 	minDistance(array, size);
 	return 1;
